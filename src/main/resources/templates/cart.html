@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-$END$
+<div class="container">
+  <h1>Shopping Cart</h1>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${cart.cartItems}">
+      <td th:text="${item.menuItem.name}"></td>
+      <td th:text="${item.quantity}"></td>
+      <td th:text="${#numbers.formatDecimal(item.menuItem.price * item.quantity, 0, 'COMMA', 2, 'POINT')}"></td>
+      <td>
+        <form th:action="@{/shopper/removeFromCart/{cartItemId}(cartItemId=${item.id})}" method="post">
+          <button type="submit" class="btn btn-danger">Remove</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Total: $<span th:text="${#numbers.formatDecimal(cartTotal, 0, 'COMMA', 2, 'POINT')}"></span></h4>
+      <a th:href="@{/shopper/menu}" class="btn btn-secondary">Continue Shopping</a>
+      <a th:href="@{/shopper/checkout}" class="btn btn-primary">Checkout</a>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

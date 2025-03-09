@@ -1,4 +1,8 @@
 package com.restaurantmanagementsystem.shopper.repositories;
 
-public class CartItemRepository {
+
+import com.restaurantmanagementsystem.shopper.models.CartItem;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 }

@@ -1,4 +1,4 @@
-package com.restaurantmanagementsystem.shopper.serives;
+package com.restaurantmanagementsystem.shopper.services;
 
 import com.restaurantmanagementsystem.shopper.models.Cart;
 import com.restaurantmanagementsystem.shopper.models.CartItem;
@@ -47,14 +47,29 @@ public class CartService {
     }
 
     public BigDecimal calculateTotal(Cart cart) {
-        return cart.getCartItems().stream()
-                .map(item -> item.getMenuItem().getPrice().multiply(BigDecimal.valueOf(item.getQuantity())))
+        System.out.println("Calculating total for cart: " + cart.getId());
+        BigDecimal total = cart.getCartItems().stream()
+                .map(item -> {
+                    BigDecimal itemPrice = item.getMenuItem().getPrice();
+                    int quantity = item.getQuantity();
+                    BigDecimal itemTotal = itemPrice.multiply(BigDecimal.valueOf(quantity));
+                    System.out.println("Item: " + item.getMenuItem().getName() + ", Price: " + itemPrice + ", Quantity: " + quantity + ", Item Total: " + itemTotal);
+                    return itemTotal;
+                })
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        System.out.println("Total amount" + total);
+        return total;
     }
 
     public Cart clearCart(Cart cart) {
         cart.getCartItems().clear();
         return cartRepository.save(cart);
+    }
+
+    public Cart createCart() {
+        Cart newCart = new Cart();
+        return cartRepository.save(newCart);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.restaurantmanagementsystem.shopper.serives;
+package com.restaurantmanagementsystem.shopper.services;
 
 import com.restaurantmanagementsystem.shopper.models.MenuItem;
 import com.restaurantmanagementsystem.shopper.repositories.MenuItemRepository;
