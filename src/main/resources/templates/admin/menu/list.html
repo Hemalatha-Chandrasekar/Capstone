@@ -1,0 +1,78 @@
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <title>Menu Items</title>-->
+<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--  <h1>Menu Items</h1>-->
+<!--  <a th:href="@{/admin/menu/add}" class="btn btn-primary">Add New Item</a>-->
+<!--  <table class="table">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>Name</th>-->
+<!--      <th>Description</th>-->
+<!--      <th>Price</th>-->
+<!--      <th>Category</th>-->
+<!--      <th>Actions</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="menuItem : ${menuItems}">-->
+<!--      <td th:text="${menuItem.name}"></td>-->
+<!--      <td th:text="${menuItem.description}"></td>-->
+<!--      <td th:text="${menuItem.price}"></td>-->
+<!--      <td th:text="${menuItem.category}"></td> &lt;!&ndash; Category here &ndash;&gt;-->
+<!--      <td>-->
+<!--        <a th:href="@{/admin/menu/edit/{id}(id=${menuItem.id})}" class="btn btn-sm btn-warning">Edit</a>-->
+<!--        <a th:href="@{/admin/menu/delete/{id}(id=${menuItem.id})}" class="btn btn-sm btn-danger">Delete</a>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Menu Items</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>Menu Items</h1>
+  <a th:href="@{/admin/menu/create}" class="btn btn-primary">Add New Item</a>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="menuItem : ${menuItems}">
+      <td th:text="${menuItem.name}"></td>
+      <td th:text="${menuItem.description}"></td>
+      <td th:text="${menuItem.price}"></td>
+      <td th:text="${menuItem.category}"></td>
+      <td>
+        <a th:href="@{/admin/menu/edit/{id}(id=${menuItem.id})}" class="btn btn-sm btn-warning">Edit</a>
+        <a th:href="@{/admin/menu/delete/{id}(id=${menuItem.id})}" class="btn btn-sm btn-danger">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<footer class="footer">
+  <button class="btn" onclick="window.location.href='/'" style="background-color: #28a745; color: #fff;">Back to Home</button>
+  <p>&copy; 2025 Flavors of Italy</p>
+</footer>
+</body>
+</html>

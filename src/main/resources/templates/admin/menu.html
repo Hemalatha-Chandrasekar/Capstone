@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Admin Menu</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>Admin Menu</h1>
+  <p>Welcome, Admin!</p>
+  <li><a th:href="@{/admin/menu/add}">Add New Menu Item</a></li>
+  <li><a th:href="@{/admin/menu/edit}">edit New Menu Item</a></li>
+  <li><a th:href="@{/admin/menu/list}">list New Menu Item</a></li>
+  </ul>
+</div>
+
+<!--  Common Menu Items (Accessible to all logged-in users) -->
+<h2>Menu Items</h2>
+<!-- Display menu items here -->
+
+</div>
+<footer class="footer">
+  <button class="btn" onclick="window.location.href='/'" style="background-color: #28a745; color: #fff;">Back to Home</button>
+  <p>&copy; 2025 Flavors of Italy</p>
+</footer>
+</body>
+</html>

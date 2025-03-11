@@ -1,3 +1,4 @@
+
 package com.restaurantmanagementsystem.shopper.models;
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,0 +1,656 @@
+<!--&lt;!&ndash;&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<html xmlns:th="http://www.thymeleaf.org">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<head>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;  <title>Register</title>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</head>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<body>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<div class="container">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;  <h1>Register</h1>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;  <form th:action="@{/register}" th:object="${user}" method="post">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <div class="form-group">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <label for="username">Username:</label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <input type="text" class="form-control" id="username" th:field="*{username}" required/>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <div class="form-group">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <label for="email">Email:</label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <input type="email" class="form-control" id="email" th:field="*{email}" required/>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <div class="form-group">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <label for="password">Password:</label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <input type="password" class="form-control" id="password" th:field="*{password}" required/>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <div class="form-group">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <label for="confirmPassword">Confirm Password:</label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <input type="password" class="form-control" id="confirmPassword" th:field="*{confirmPassword}" required/>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <button type="submit" class="btn btn-primary">Register</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <a th:href="@{/}" class="btn btn-secondary">Back to Home</a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;  </form>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</body>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</html>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html xmlns:th="http://www.thymeleaf.org">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;  <title>Register</title>&ndash;&gt;-->
+<!--&lt;!&ndash;  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">&ndash;&gt;-->
+<!--&lt;!&ndash;  <link rel="stylesheet" href="/css/styles.css">&ndash;&gt;-->
+<!--&lt;!&ndash;  <style>&ndash;&gt;-->
+<!--&lt;!&ndash;    /* Video Background Styles */&ndash;&gt;-->
+<!--&lt;!&ndash;    .video-background {&ndash;&gt;-->
+<!--&lt;!&ndash;      position: fixed;&ndash;&gt;-->
+<!--&lt;!&ndash;      top: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;      left: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;      width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;      height: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;      overflow: hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;      z-index: -1;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    .video-background video {&ndash;&gt;-->
+<!--&lt;!&ndash;      min-width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;      min-height: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;      width: auto;&ndash;&gt;-->
+<!--&lt;!&ndash;      height: auto;&ndash;&gt;-->
+<!--&lt;!&ndash;      position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;      top: 50%;&ndash;&gt;-->
+<!--&lt;!&ndash;      left: 50%;&ndash;&gt;-->
+<!--&lt;!&ndash;      transform: translateX(-50%) translateY(-50%);&ndash;&gt;-->
+<!--&lt;!&ndash;      object-fit: cover;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    .video-overlay {&ndash;&gt;-->
+<!--&lt;!&ndash;      position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;      top: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;      left: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;      width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;      height: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;      background-color: rgba(0, 0, 0, 0.3);&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    @media (pointer: coarse) {&ndash;&gt;-->
+<!--&lt;!&ndash;      .video-background {&ndash;&gt;-->
+<!--&lt;!&ndash;        display: none;&ndash;&gt;-->
+<!--&lt;!&ndash;      }&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    /* Content Styles */&ndash;&gt;-->
+<!--&lt;!&ndash;    .container {&ndash;&gt;-->
+<!--&lt;!&ndash;      position: relative;&ndash;&gt;-->
+<!--&lt;!&ndash;      padding: 20px;&ndash;&gt;-->
+<!--&lt;!&ndash;      border-radius: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;      z-index: 1;&ndash;&gt;-->
+<!--&lt;!&ndash;      color: white;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    .container::before {&ndash;&gt;-->
+<!--&lt;!&ndash;      content: "";&ndash;&gt;-->
+<!--&lt;!&ndash;      position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;      top: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;      left: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;      width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;      height: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;      background-color: rgba(78, 3, 3, 0.8);&ndash;&gt;-->
+<!--&lt;!&ndash;      border-radius: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;      z-index: -1;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    .glow {&ndash;&gt;-->
+<!--&lt;!&ndash;      color: #fff;&ndash;&gt;-->
+<!--&lt;!&ndash;      text-align: center; /* Center the registration heading */&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    #main-nav .nav-link {&ndash;&gt;-->
+<!--&lt;!&ndash;      color: #fff !important;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    /* Form Styling */&ndash;&gt;-->
+<!--&lt;!&ndash;    #registrationForm {&ndash;&gt;-->
+<!--&lt;!&ndash;      width: 100%; /* Make form take full width */&ndash;&gt;-->
+<!--&lt;!&ndash;      max-width: 500px; /* Limit maximum width */&ndash;&gt;-->
+<!--&lt;!&ndash;      margin: 0 auto; /* Center the form */&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    #registrationForm div {&ndash;&gt;-->
+<!--&lt;!&ndash;      margin-bottom: 15px;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    #registrationForm label {&ndash;&gt;-->
+<!--&lt;!&ndash;      display: block;&ndash;&gt;-->
+<!--&lt;!&ndash;      margin-bottom: 5px;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    #registrationForm input[type="text"],&ndash;&gt;-->
+<!--&lt;!&ndash;    #registrationForm input[type="email"],&ndash;&gt;-->
+<!--&lt;!&ndash;    #registrationForm input[type="password"] {&ndash;&gt;-->
+<!--&lt;!&ndash;      width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;      padding: 8px;&ndash;&gt;-->
+<!--&lt;!&ndash;      border-radius: 5px;&ndash;&gt;-->
+<!--&lt;!&ndash;      border: 1px solid #ccc;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    #registrationForm button[type="submit"] {&ndash;&gt;-->
+<!--&lt;!&ndash;      background-color: #007bff;&ndash;&gt;-->
+<!--&lt;!&ndash;      color: white;&ndash;&gt;-->
+<!--&lt;!&ndash;      padding: 10px 15px;&ndash;&gt;-->
+<!--&lt;!&ndash;      border: none;&ndash;&gt;-->
+<!--&lt;!&ndash;      border-radius: 5px;&ndash;&gt;-->
+<!--&lt;!&ndash;      cursor: pointer;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    #registrationForm button[type="submit"]:hover {&ndash;&gt;-->
+<!--&lt;!&ndash;      background-color: #0056b3;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;    #emailError {&ndash;&gt;-->
+<!--&lt;!&ndash;      color: red;&ndash;&gt;-->
+<!--&lt;!&ndash;      display: block; /* Ensure error shows on a new line */&ndash;&gt;-->
+<!--&lt;!&ndash;      margin-top: 5px;&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+<!--&lt;!&ndash;  </style>&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="video-background">&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="video-overlay"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <video autoplay loop muted playsinline>&ndash;&gt;-->
+<!--&lt;!&ndash;    <source src="/images/cooking.mp4" type="video/mp4">&ndash;&gt;-->
+<!--&lt;!&ndash;    Your browser does not support the video tag.&ndash;&gt;-->
+<!--&lt;!&ndash;  </video>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="container">&ndash;&gt;-->
+<!--&lt;!&ndash;  <h1 class="glow">Register</h1>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <form id="registrationForm">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <label for="firstName">First Name:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;      <input type="text" id="firstName" name="firstName" required>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <label for="lastName">Last Name:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;      <input type="text" id="lastName" name="lastName" required>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <label for="email">Email:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;      <input type="email" id="email" name="email" required>&ndash;&gt;-->
+<!--&lt;!&ndash;      <span id="emailError"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <label for="password">Password:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;      <input type="password" id="password" name="password" required>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <button type="submit">Register</button>&ndash;&gt;-->
+<!--&lt;!&ndash;  </form>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<script>&ndash;&gt;-->
+<!--&lt;!&ndash;  const form = document.getElementById('registrationForm');&ndash;&gt;-->
+
+<!--&lt;!&ndash;  form.addEventListener('submit', async (event) => {&ndash;&gt;-->
+<!--&lt;!&ndash;    event.preventDefault();&ndash;&gt;-->
+
+<!--&lt;!&ndash;    const firstName = document.getElementById('firstName').value;&ndash;&gt;-->
+<!--&lt;!&ndash;    const lastName = document.getElementById('lastName').value;&ndash;&gt;-->
+<!--&lt;!&ndash;    const email = document.getElementById('email').value;&ndash;&gt;-->
+<!--&lt;!&ndash;    const password = document.getElementById('password').value;&ndash;&gt;-->
+
+<!--&lt;!&ndash;    const userData = {&ndash;&gt;-->
+<!--&lt;!&ndash;      firstName: firstName,&ndash;&gt;-->
+<!--&lt;!&ndash;      lastName: lastName,&ndash;&gt;-->
+<!--&lt;!&ndash;      email: email,&ndash;&gt;-->
+<!--&lt;!&ndash;      password: password&ndash;&gt;-->
+<!--&lt;!&ndash;    };&ndash;&gt;-->
+
+<!--&lt;!&ndash;    try {&ndash;&gt;-->
+<!--&lt;!&ndash;      const response = await fetch('http://localhost:9090/register', {&ndash;&gt;-->
+<!--&lt;!&ndash;        method: 'POST',&ndash;&gt;-->
+<!--&lt;!&ndash;        headers: {&ndash;&gt;-->
+<!--&lt;!&ndash;          'Content-Type': 'application/json'&ndash;&gt;-->
+<!--&lt;!&ndash;        },&ndash;&gt;-->
+<!--&lt;!&ndash;        body: JSON.stringify(userData)&ndash;&gt;-->
+<!--&lt;!&ndash;      });&ndash;&gt;-->
+
+<!--&lt;!&ndash;      if (response.ok) {&ndash;&gt;-->
+<!--&lt;!&ndash;        const data = await response.json();&ndash;&gt;-->
+<!--&lt;!&ndash;        alert('Registration successful!');&ndash;&gt;-->
+<!--&lt;!&ndash;        console.log('Registration successful:', data);&ndash;&gt;-->
+<!--&lt;!&ndash;        form.reset();&ndash;&gt;-->
+<!--&lt;!&ndash;        document.getElementById('emailError').textContent = '';&ndash;&gt;-->
+<!--&lt;!&ndash;      } else {&ndash;&gt;-->
+<!--&lt;!&ndash;        let errorData = {};&ndash;&gt;-->
+<!--&lt;!&ndash;        try {&ndash;&gt;-->
+<!--&lt;!&ndash;          errorData = await response.json();&ndash;&gt;-->
+<!--&lt;!&ndash;        } catch (parseError) {&ndash;&gt;-->
+<!--&lt;!&ndash;          console.error("Error parsing JSON error response:", parseError);&ndash;&gt;-->
+<!--&lt;!&ndash;          alert('Registration failed: ' + response.statusText);&ndash;&gt;-->
+<!--&lt;!&ndash;          return;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        if (errorData.hasOwnProperty('email')) {&ndash;&gt;-->
+<!--&lt;!&ndash;          document.getElementById('emailError').textContent = errorData.email;&ndash;&gt;-->
+<!--&lt;!&ndash;        } else {&ndash;&gt;-->
+<!--&lt;!&ndash;          document.getElementById('emailError').textContent = 'Registration failed: ' + response.statusText;&ndash;&gt;-->
+<!--&lt;!&ndash;          console.error('Registration failed:', response.status, response.statusText, errorData);&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;      }&ndash;&gt;-->
+<!--&lt;!&ndash;    } catch (error) {&ndash;&gt;-->
+<!--&lt;!&ndash;      console.error('Error:', error);&ndash;&gt;-->
+<!--&lt;!&ndash;      alert('Registration failed: ' + error);&ndash;&gt;-->
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+<!--&lt;!&ndash;  });&ndash;&gt;-->
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <title>Register</title>-->
+<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--  <link rel="stylesheet" href="/css/styles.css">-->
+<!--  <style>-->
+<!--    /* Video Background Styles */-->
+<!--    .video-background {-->
+<!--      position: fixed;-->
+<!--      top: 0;-->
+<!--      left: 0;-->
+<!--      width: 100%;-->
+<!--      height: 100%;-->
+<!--      overflow: hidden;-->
+<!--      z-index: -1;-->
+<!--    }-->
+
+<!--    .video-background video {-->
+<!--      min-width: 100%;-->
+<!--      min-height: 100%;-->
+<!--      width: auto;-->
+<!--      height: auto;-->
+<!--      position: absolute;-->
+<!--      top: 50%;-->
+<!--      left: 50%;-->
+<!--      transform: translateX(-50%) translateY(-50%);-->
+<!--      object-fit: cover;-->
+<!--    }-->
+
+<!--    .video-overlay {-->
+<!--      position: absolute;-->
+<!--      top: 0;-->
+<!--      left: 0;-->
+<!--      width: 100%;-->
+<!--      height: 100%;-->
+<!--      background-color: rgba(0, 0, 0, 0.3);-->
+<!--    }-->
+
+<!--    @media (pointer: coarse) {-->
+<!--      .video-background {-->
+<!--        display: none;-->
+<!--      }-->
+<!--    }-->
+
+<!--    /* Content Styles */-->
+<!--    .container {-->
+<!--      position: relative;-->
+<!--      padding: 20px;-->
+<!--      border-radius: 10px;-->
+<!--      z-index: 1;-->
+<!--      color: white;-->
+<!--    }-->
+
+<!--    .container::before {-->
+<!--      content: "";-->
+<!--      position: absolute;-->
+<!--      top: 0;-->
+<!--      left: 0;-->
+<!--      width: 100%;-->
+<!--      height: 100%;-->
+<!--      background-color: rgba(78, 3, 3, 0.8);-->
+<!--      border-radius: 10px;-->
+<!--      z-index: -1;-->
+<!--    }-->
+
+<!--    .glow {-->
+<!--      color: #fff;-->
+<!--      text-align: center;-->
+<!--    }-->
+
+<!--    #main-nav .nav-link {-->
+<!--      color: #fff !important;-->
+<!--    }-->
+
+<!--    /* Form Styling */-->
+<!--    #registrationForm {-->
+<!--      width: 100%;-->
+<!--      max-width: 500px;-->
+<!--      margin: 0 auto;-->
+<!--    }-->
+
+<!--    #registrationForm div {-->
+<!--      margin-bottom: 15px;-->
+<!--    }-->
+
+<!--    #registrationForm label {-->
+<!--      display: block;-->
+<!--      margin-bottom: 5px;-->
+<!--    }-->
+
+<!--    #registrationForm input[type="text"],-->
+<!--    #registrationForm input[type="password"],-->
+<!--    #registrationForm select { /* Added style for the select element */-->
+<!--      width: 100%;-->
+<!--      padding: 8px;-->
+<!--      border-radius: 5px;-->
+<!--      border: 1px solid #ccc;-->
+<!--    }-->
+
+<!--    #registrationForm button[type="submit"] {-->
+<!--      background-color: #007bff;-->
+<!--      color: white;-->
+<!--      padding: 10px 15px;-->
+<!--      border: none;-->
+<!--      border-radius: 5px;-->
+<!--      cursor: pointer;-->
+<!--    }-->
+
+<!--    #registrationForm button[type="submit"]:hover {-->
+<!--      background-color: #0056b3;-->
+<!--    }-->
+
+<!--    #emailError {-->
+<!--      color: red;-->
+<!--      display: block;-->
+<!--      margin-top: 5px;-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="video-background">-->
+<!--  <div class="video-overlay"></div>-->
+<!--  <video autoplay loop muted playsinline>-->
+<!--    <source src="/images/cooking.mp4" type="video/mp4">-->
+<!--    Your browser does not support the video tag.-->
+<!--  </video>-->
+<!--</div>-->
+
+<!--<div class="container">-->
+<!--  <h1 class="glow">Register</h1>-->
+
+<!--  <form id="registrationForm">-->
+<!--    <div>-->
+<!--      <label for="username">Username:</label>-->
+<!--      <input type="text" id="username" name="username" required>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <label for="password">Password:</label>-->
+<!--      <input type="password" id="password" name="password" required>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <label for="role">Role:</label>-->
+<!--      <select id="role" name="role" required>-->
+<!--        <option value="USER">User</option>-->
+<!--       -->
+<!--        <option value="GUEST">Guest</option>-->
+<!--        &lt;!&ndash; You can add more roles as needed &ndash;&gt;-->
+<!--      </select>-->
+<!--    </div>-->
+<!--    <button type="submit">Register</button>-->
+<!--  </form>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--  const form = document.getElementById('registrationForm');-->
+
+<!--  form.addEventListener('submit', async (event) => {-->
+<!--    event.preventDefault();-->
+
+<!--    const username = document.getElementById('username').value;-->
+<!--    const password = document.getElementById('password').value;-->
+<!--    const role = document.getElementById('role').value;-->
+
+<!--    const userData = {-->
+<!--      username: username,-->
+<!--      password: password,-->
+
+<!--    };-->
+
+<!--    try {-->
+<!--      const response = await fetch('http://localhost:9090/register', {-->
+<!--        method: 'POST',-->
+<!--        headers: {-->
+<!--          'Content-Type': 'application/json'-->
+<!--        },-->
+<!--        body: JSON.stringify(userData)-->
+<!--      });-->
+
+<!--      if (response.ok) {-->
+<!--        const data = await response.json();-->
+<!--        alert('Registration successful!');-->
+<!--        console.log('Registration successful:', data);-->
+<!--        form.reset();-->
+<!--      } else {-->
+<!--        let errorData = {};-->
+<!--        try {-->
+<!--          errorData = await response.json();-->
+<!--        } catch (parseError) {-->
+<!--          console.error("Error parsing JSON error response:", parseError);-->
+<!--          alert('Registration failed: ' + response.statusText);-->
+<!--          return;-->
+<!--        }-->
+<!--        alert('Registration failed: ' + response.statusText);-->
+<!--        console.error('Registration failed:', response.status, response.statusText, errorData);-->
+<!--      }-->
+<!--    } catch (error) {-->
+<!--      console.error('Error:', error);-->
+<!--      alert('Registration failed: ' + error);-->
+<!--    }-->
+<!--  });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* Video Background Styles */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        @media (pointer: coarse) {
+            .video-background {
+                display: none;
+            }
+        }
+
+        /* Content Styles */
+        .container {
+            position: relative;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1;
+            color: white;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(78, 3, 3, 0.8);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        .glow {
+            color: #fff;
+            text-align: center;
+        }
+
+        #main-nav .nav-link {
+            color: #fff !important;
+        }
+
+        /* Form Styling */
+        #registrationForm {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #registrationForm div {
+            margin-bottom: 15px;
+        }
+
+        #registrationForm label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #registrationForm input[type="text"],
+        #registrationForm input[type="password"],
+        #registrationForm select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #registrationForm button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #registrationForm button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #emailError {
+            color: red;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="video-background">
+    <div class="video-overlay"></div>
+    <video autoplay loop muted playsinline>
+        <source src="/images/cooking.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<div class="container">
+    <h1 class="glow">Register</h1>
+
+    <form id="registrationForm">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="USER">Shopper</option>
+<!--                <option value="GUEST">Guest</option>-->
+                <!-- You can add more roles as needed -->
+            </select>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById('registrationForm');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const role = document.getElementById('role').value;
+
+        const userData = {
+            username: username,
+            password: password,
+
+
+            role: role // ADDED: Include the role in the data sent to the server
+        };
+
+        try {
+            const response = await fetch('http://localhost:9090/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                alert('Registration successful!');
+                console.log('Registration successful:', data);
+                form.reset();
+            } else {
+                let errorData = {};
+                try {
+                    errorData = await response.json();
+                } catch (parseError) {
+                    console.error("Error parsing JSON error response:", parseError);
+                    alert('Registration failed: ' + response.statusText);
+                    return;
+                }
+                alert('Registration failed: ' + response.statusText);
+                console.error('Registration failed:', response.status, response.statusText, errorData);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Registration failed: ' + error);
+        }
+    });
+</script>
+</body>
+</html>

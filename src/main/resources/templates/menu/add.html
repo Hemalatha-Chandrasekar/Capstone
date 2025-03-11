@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add Menu Item</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>Add New Menu Item</h1>
+  <form th:action="@{/admin/menu/add}" th:object="${menuItem}" method="post">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" th:field="*{name}" required/>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea class="form-control" id="description" th:field="*{description}" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" step="0.01" class="form-control" id="price" th:field="*{price}" required/>
+    </div>
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select class="form-control" id="category" th:field="*{category}">
+        <option th:each="category : ${categories}" th:value="${category}" th:text="${category}"></option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a th:href="@{/admin/menu}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+<footer class="footer">
+  <button class="btn" onclick="window.location.href='/'" style="background-color: #28a745; color: #fff;">Back to Home</button>
+  <p>&copy; 2025 Flavors of Italy</p>
+</footer>
+</body>
+</html>

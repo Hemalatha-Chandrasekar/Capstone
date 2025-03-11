@@ -3,12 +3,23 @@
 <head>
     <title>Restaurant Menu</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            background-image: url('/images/bg1.jpg'); /* adjust to your path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: black;
+
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <h1>Our Menu</h1>
-    <div class="row">
-        <div class="col-md-4" th:each="item : ${menuItems}">
+    <div class="grid">  <!-- Use the 'grid' class here -->
+        <div class="col-md-4" th:each="item : ${menuItems}">  <!-- Now use col-md-4 or other grid classes -->
             <div class="card mb-4">
                 <img th:src="${item.imageUrl}" class="card-img-top" alt="Food Image">
                 <div class="card-body">
@@ -37,5 +48,9 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<footer class="footer">
+    <button class="btn" onclick="window.location.href='/'" style="background-color: #28a745; color: #fff;">Back to Home</button>
+    <p>© 2025 Flavors of Italy</p>
+</footer>
 </body>
 </html>

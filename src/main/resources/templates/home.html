@@ -1,0 +1,203 @@
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <title>Restaurant Home</title>-->
+<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--  <h1>Welcome to Our Restaurant!</h1>-->
+
+<!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--    <a class="navbar-brand" href="/">Home</a>-->
+<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"-->
+<!--            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--      <ul class="navbar-nav">-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" th:href="@{/about}">About</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" th:href="@{/contact}">Contact</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" th:href="@{/login}">Login</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" th:href="@{/register}">Register</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </nav>-->
+
+<!--  <h2>Menu Items</h2>-->
+<!--  <div class="row">-->
+<!--    <th:block th:if="${menuItems != null and !menuItems.isEmpty()}">-->
+<!--      <div class="col-md-4" th:each="menuItem : ${menuItems}">-->
+<!--        <div class="card mb-4">-->
+<!--          &lt;!&ndash; Add an image if you have one &ndash;&gt;-->
+<!--          <img th:if="${menuItem.imageUrl}" th:src="${menuItem.imageUrl}" class="card-img-top"-->
+<!--               alt="Menu Item Image" style="max-height: 200px; object-fit: cover;">-->
+<!--          <div class="card-body">-->
+<!--            <h5 class="card-title" th:text="${menuItem.name}"></h5>-->
+<!--            <p class="card-text" th:text="${menuItem.description}"></p>-->
+<!--            <p class="card-text">Price: $<span-->
+<!--                    th:text="${#numbers.formatDecimal(menuItem.price, 0, 'COMMA', 2, 'POINT')}"></span>-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </th:block>-->
+<!--    <th:block th:unless="${menuItems != null and !menuItems.isEmpty()}">-->
+<!--      <div class="col-12">-->
+<!--        <p>No menu items available.</p>-->
+<!--      </div>-->
+<!--    </th:block>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+<!--</body>-->
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Restaurant Home</title>
+<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* Video Background Styles */
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1; /* Place behind content */
+    }
+
+    .video-background video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      object-fit: cover; /* Added to ensure the video fills the space */
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3); /* Adjust the alpha value (0.0 to 1.0) */
+    }
+
+    @media (pointer: coarse) {
+      .video-background {
+        display: none; /* Hide video on touch devices */
+      }
+    }
+
+    /* Content Styles (Adjust for visibility over video) */
+    .container {
+      position: relative; /* Needed to correctly position content over the video */
+      background-color: #4e0303;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1; /* Ensure container is above the video */
+    }
+
+    .glow {
+      color: #fff; /* Ensure glow text is visible */
+    }
+
+    #main-nav .nav-link {
+      color: #fff !important; /* Ensure nav links are visible */
+    }
+  </style>
+</head>
+<body>
+<div class="video-background">
+  <div class="video-overlay"></div>  <!-- Add this overlay -->
+  <video autoplay loop muted playsinline>
+    <source src="/images/cooking.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+<div class="container">
+  <h1 class="glow">Welcome to Our Restaurant!</h1>
+
+  <nav id="main-nav" class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/about}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/contact}">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/login}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/register}">Register</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<!--  <h2>Menu Items</h2>-->
+<!--  <div class="row">-->
+<!--    <th:block th:if="${menuItems != null and !menuItems.isEmpty()}">-->
+<!--      <div class="col-md-4" th:each="menuItem : ${menuItems}">-->
+<!--        <div class="card mb-4">-->
+<!--          &lt;!&ndash; Add an image if you have one &ndash;&gt;-->
+<!--          <img th:if="${menuItem.imageUrl}" th:src="${menuItem.imageUrl}"-->
+<!--               class="card-img-top menu-item-image" alt="Menu Item Image">-->
+<!--          <div class="card-body">-->
+<!--            <h5 class="card-title" th:text="${menuItem.name}"></h5>-->
+<!--            <p class="card-text" th:text="${menuItem.description}"></p>-->
+<!--            <p class="card-text">Price: $<span-->
+<!--                    th:text="${#numbers.formatDecimal(menuItem.price, 0, 'COMMA', 2, 'POINT')}"></span>-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+    </th:block>
+    <th:block th:unless="${menuItems != null and !menuItems.isEmpty()}">
+      <div class="col-12">
+        <p>No menu items available.</p>
+      </div>
+    </th:block>
+  </div>
+</div>
+
+<main>
+  <section class="hero">
+    <h2>Welcome to Flavors of Italy</h2>
+    <p>Discover the authentic taste of Italy with our curated recipes.</p>
+
+    </a>
+  </section>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

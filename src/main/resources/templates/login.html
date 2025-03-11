@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>Login</h1>
+  <div th:if="${param.error}">
+    <div class="alert alert-danger">Invalid username and password.</div>
+  </div>
+  <div th:if="${param.logout}">
+    <div class="alert alert-info">You have been logged out.</div>
+  </div>
+  <form th:action="@{/login}" method="post">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" class="form-control" required/>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" class="form-control" required/>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </form>
+  <form th:action="@{/register}" method="post" th:object="${registrationForm}">
+    <p>
+      New user? <a th:href="@{/register}">Register here</a>
+
+    </p>
+</div>
+<footer class="footer">
+<!--  <button class="btn" onclick="window.location.href = 'home';" style="background-color: #28a745; color: #fff;">Go to home</button>-->
+  <a href="/">Go to home</a>
+<!--  <button class="btn" onclick="window.location.assign('/')" style="background-color: #28a745; color: #fff;">Back to Home</button>-->
+<!--  <button class="btn" onclick="window.location.assign('/')" style="background-color: #28a745; color: #fff;">Back to Home</button>-->
+<!--  <button class="btn" onclick="location.href = this.formAction"  formAction="/" style="background-color: #28a745; color: #fff;">Back to Home</button>-->
+  <p>&copy; 2025 Flavors of Italy</p>
+</footer>
+</body>
+</html>
