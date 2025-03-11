@@ -1,0 +1,59 @@
+h2 {
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-shadow: 4px 4px 4px #d50b0b;
+    text-align: center;
+}
+
+header {
+    background-color: #5f1111;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Navigation Styling */
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #7c6c6c;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: #61c4d7;
+    border-radius: 5px;
+}
+
+.glow {
+    font-size: 2.5em;
+    color: #fff;
+    text-align: center;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff00ff;
+    }
+}

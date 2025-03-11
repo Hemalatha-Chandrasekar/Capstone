@@ -1,0 +1,20 @@
+/* Position the icon container */
+.icon-container {
+    position: fixed; /* Fixed position to keep it in place while scrolling */
+    top: 10px; /* Distance from the top */
+    left: 10px; /* Distance from the left */
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+/* Style the SVG icon */
+.icon {
+    width: 48px; /* Set the size of the icon */
+    height: 48px;
+    fill: #007bff; /* Change the color of the icon */
+    transition: fill 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Change icon color on hover */
+.icon:hover {
+    fill: #0056b3; /* Darker shade on hover */
+}

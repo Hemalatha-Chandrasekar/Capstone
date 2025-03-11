@@ -1,0 +1,5 @@
+/*.menu-item-image {*/
+/*    max-width: 100%;  !* Make image responsive within its container *!*/
+/*    max-height: 200px; !* Adjust this value *!*/
+/*    object-fit: cover; !* Maintain aspect ratio, crop if needed *!*/
+/*}*/

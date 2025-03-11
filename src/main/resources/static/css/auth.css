@@ -1,0 +1,145 @@
+/* General Styles */
+
+
+h1 {
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Change this to your desired font */
+    font-size: 2.5em; /* Adjust the font size as needed */
+    color: #fff; /* Adjust the color as needed */
+    text-align: center;
+    animation: glow 1.5s ease-in-out infinite alternate;
+
+}
+
+
+header {
+    background-color: #c22e2e;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+nav {
+    background-color: #05293a;
+    padding: 10px 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 1.1em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #61c4d7;
+    border-radius: 5px;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown li {
+    display: block;
+    margin: 0;
+}
+
+.dropdown li a {
+    padding: 10px 15px;
+    display: block;
+}
+
+nav ul li:hover .dropdown {
+    display: block;
+}
+
+/* Navigation Styling */
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: #61c4d7;
+    border-radius: 5px;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+    margin-bottom: 20px;
+}
+
+.auth-buttons .btn {
+    background-color: #af4c4c;
+    color: white;
+    box-shadow: 2px 2px 4px #000000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.auth-buttons .btn:hover {
+    background-color: #45a049;
+}
+
+/* Error Messages */
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.input-group.error input {
+    border-color: red;
+}
+
+.input-group.success input {
+    border-color: green;
+}
+
+@media (max-width: 768px) {
+    .register-form {
+        width: 100%; /* Make the form wider on smaller screens */
+    }
+}

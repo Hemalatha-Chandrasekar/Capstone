@@ -1,0 +1,295 @@
+/* ================= General Styles ================= */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Headings */
+h1 {
+    margin: 0;
+    font-size: 2em; /*  was in header h1 {} */
+    color: #fff; /*  was in header h1 {} */
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace; /* Moved from header */
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-shadow: 4px 4px 4px #d50b0b;
+    text-align: center;
+    font-size: 1.5em; /* Added  */
+}
+
+/* Links */
+a {
+    text-decoration: none; /* Reset text decoration for all links */
+    color: inherit;
+}
+
+/* Buttons */
+.btn {
+    background-color: #c22e2e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #9a1a1a;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ================= Header and Navigation ================= */
+
+/* Header */
+header {
+    background-color: #5f1111;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+/* Navigation */
+nav {
+    background-color: #05293a;
+    padding: 10px 0;
+    font-size: 1.1em; /* General font size for navigation */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative; /* For dropdown positioning */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #61c4d7;
+    border-radius: 5px;
+}
+
+/* Dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown li {
+    display: block;
+    margin: 0;
+}
+
+.dropdown li a {
+    padding: 10px 15px;
+    display: block;
+}
+
+nav ul li:hover .dropdown {
+    display: block;
+}
+
+/* ================= Authentication Styles ================= */
+
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-buttons .btn {
+    background-color: #af4c4c;
+    color: white;
+    box-shadow: 2px 2px 4px #000000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.auth-buttons .btn:hover {
+    background-color: #45a049;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.input-group .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* ================= Menu Items Grid ================= */
+
+/* General Grid Container Styles */
+.container {
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 0 15px; /* Add some padding on the sides */
+}
+
+/* Grid System */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Auto-fit Columns */
+    gap: 20px; /* Spacing between columns and rows (adjust as desired) */
+}
+
+/* Menu Item Styles */
+.menu-item {
+    border-width: 2px;
+    border-style: solid;
+    border-color: green;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: background-color 0.3s;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff; /* Added for text color */
+    text-shadow: 4px 4px 4px red; /* Added for text shadow */
+}
+
+.menu-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.menu-item h3 {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+    color: #fff; /* added to override the #333*/
+    display: inline-block;
+    margin-right: 10px;
+    text-shadow: 4px 4px 4px red;
+}
+
+.menu-item .price {
+    font-size: 1.2em;
+    color: #c22e2e;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.menu-item button {
+    background-color: #c22e2e;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.menu-item button:hover {
+    background-color: #9a1a1a;
+}
+
+/* ================= Responsive Design ================= */
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust columns for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr; /* Single column layout for very small screens */
+    }
+}
+
+/* Multicoloured glow effect*/
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
+    }
+    25% {
+        text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+    }
+    50% {
+        text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 15px #0000ff, 0 0 20px #0000ff;
+    }
+    75% {
+        text-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 15px #ffff00, 0 0 20px #ffff00;
+    }
+    100% {
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+    }
+}

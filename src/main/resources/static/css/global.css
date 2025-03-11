@@ -1,0 +1,306 @@
+/* Global Styles - Body, Fonts, Colors */
+/* General Styles */
+:root {
+  --primary-color: #007BFF; /* Blue */
+  --secondary-color: #4CAF50; /* Green */
+  --hover-color: #00b339; /* Darker blue */
+  --hover-secondary-color: #d4563d; /* Darker green */
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('../images/juice1.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  color: #860000;
+}
+
+main p {
+  font-size: 26px;  /* Adjust this value as needed (e.g., 14px, 18px, 1em, 1.2rem) */
+  line-height: 1.5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  text-shadow: #d41313 2px 2px 4px;
+  color: var(--white-color);
+  font-weight: bold;
+  color: white;
+}
+
+/* Center the main content */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure the main section covers the full viewport height */
+  text-align: center;
+}
+
+
+main h2 {
+  margin-bottom: 10px; /* Add some space below the heading */
+  
+}
+
+/* Navigation Styling */
+#main-nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #9c4141; /* Red background for the nav bar */
+}
+
+#main-nav li {
+  position: relative; /* Required for dropdown positioning */
+  margin: 0 15px;
+}
+
+#main-nav li a {
+  text-decoration: none;
+  color: #fff; /* White text color for links */
+  font-size: 1.1em;
+  padding: 10px 15px;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+#main-nav li a:hover {
+  background-color: #062932; /* Darker red on hover */
+  border-radius: 5px;
+}
+
+/* Dropdown Menu Styling */
+#main-nav .dropdown {
+  display: none; /* Hide dropdown by default */
+  position: absolute;
+  background-color: #cb1c1c; /* Red background for dropdown */
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(47, 15, 15, 0.2);
+  z-index: 1;
+  border-radius: 5px; /* Rounded corners */
+}
+
+#main-nav .dropdown li {
+  margin: 0; /* Remove margin for dropdown items */
+}
+
+#main-nav .dropdown li a {
+  padding: 10px; /* Padding for dropdown links */
+}
+
+/* Show the dropdown menu on hover */
+#main-nav li:hover .dropdown {
+  display: block;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+.dropdown li {
+  list-style: none;
+}
+
+.dropdown li a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown li a:hover {
+  background-color: #ddd;
+}
+
+nav ul li:hover .dropdown {
+  display: block;
+}
+
+/* Multicolor Glow Effect */
+.glow {
+  font-size: 2.5em;
+  color: #fff;
+  text-align: center;
+  animation: glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
+  }
+  25% {
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+  }
+  50% {
+    text-shadow: 0 0 5px #0000ff, 0 0 10px #0000ff, 0 0 15px #0000ff, 0 0 20px #0000ff;
+  }
+  75% {
+    text-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 15px #ffff00, 0 0 20px #ffff00;
+  }
+  100% {
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+  }
+}
+/* General Styles */
+
+
+h1 {
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Change this to your desired font */
+  font-size: 2.5em; /* Adjust the font size as needed */
+  color: #fff; /* Adjust the color as needed */
+  text-align: center;
+  animation: glow 1.5s ease-in-out infinite alternate;
+
+}
+
+
+header {
+  background-color: #c22e2e;
+  color: #fff;
+  padding: 1em 0;
+  text-align: center;
+}
+
+nav {
+  background-color: #05293a;
+  padding: 10px 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 1.1em;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #61c4d7;
+  border-radius: 5px;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown li {
+  display: block;
+  margin: 0;
+}
+
+.dropdown li a {
+  padding: 10px 15px;
+  display: block;
+}
+
+nav ul li:hover .dropdown {
+  display: block;
+}
+
+/* Navigation Styling */
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+}
+
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+  background-color: #61c4d7;
+  border-radius: 5px;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  margin-bottom: 20px;
+}
+
+.auth-buttons .btn {
+  background-color: #af4c4c;
+  color: white;
+  box-shadow: 2px 2px 4px #000000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.auth-buttons .btn:hover {
+  background-color: #45a049;
+}
+
+/* Error Messages */
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.input-group.error input {
+  border-color: red;
+}
+
+.input-group.success input {
+  border-color: green;
+}
+
+@media (max-width: 768px) {
+  .register-form {
+      width: 100%; /* Make the form wider on smaller screens */
+  }
+}
